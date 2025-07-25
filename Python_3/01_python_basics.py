@@ -570,6 +570,15 @@ print(s.startswith("  He"))  # True
 # endswith(suffix[, start[, end]]) – проверяет, заканчивается ли строка на suffix
 print(s.endswith("!  "))  # True
 
+# Срезы (slices)
+s = "Hello, Egor!"
+
+print(s[0:5])      # 'Hello' — символы с 0 по 4
+print(s[7:])       # 'Egor!' — с 7 до конца
+print(s[:5])       # 'Hello' — с начала до 5
+print(s[::2])      # 'Hlo go!' — каждый второй символ
+print(s[::-1])     # '!rogE ,olleH' — строка в обратном порядке
+
 
 
 # Расширенный пример format с именованными аргументами
