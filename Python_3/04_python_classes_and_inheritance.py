@@ -228,6 +228,29 @@ print(c1)
 print(c2)
 
 
+# dir() – просмотр атрибутов и методов
+# dir(Cereal) — показывает все атрибуты и методы класса (включая магические)
+"""
+[
+ '__class__', '__delattr__', '__dict__', '__dir__', '__doc__', '__eq__',
+ '__format__', '__ge__', '__getattribute__', '__gt__', '__hash__', '__init__',
+ '__init_subclass__', '__le__', '__lt__', '__module__', '__ne__', '__new__',
+ '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__str__',
+ '__subclasshook__', '__weakref__'
+]
+"""
+# dir(c1) — показывает всё то же самое плюс переменные экземпляра
+"""
+[
+ '__class__', '__delattr__', '__dict__', '__dir__', '__doc__', '__eq__',
+ '__format__', '__ge__', '__getattribute__', '__gt__', '__hash__', '__init__',
+ '__init_subclass__', '__le__', '__lt__', '__module__', '__ne__', '__new__',
+ '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__str__',
+ '__subclasshook__', '__weakref__',
+ 'brand', 'fiber', 'name'
+]
+"""
+
 
 # Тестирование классов
 
@@ -491,6 +514,8 @@ try:
     print (1/0)
 except :
     print("Произошла ошибка")   # Произошла ошибка
+finally:                                # не обязательная часть
+    print("Этот код выполнится всегда") # Даже если ошибки нет, finally будет выполнен
 
 #   Есть встроенные типы исключений:
 # ZeroDivisionError — деление на ноль

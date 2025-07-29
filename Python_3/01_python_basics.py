@@ -199,10 +199,9 @@ print(Decimal(0.1)+Decimal(0.2)) #неточно
 a = Decimal("0.1")  # Важно: всегда создавай Decimal из строк, 
 b = Decimal("0.2")  # чтобы избежать неточностей при преобразовании float.
 print(type(a))
-
+print(a + b)
 
 # Tuples, Lists and Strings
-print(a + b)
 x = 1, 2
 y = (2,)
 print(type(x))
@@ -210,6 +209,8 @@ print(x)
 print(y)
 empty_tuple = ()
 empty_tuple = tuple()
+
+print("He said \"Hello\"")  # He said "Hello"
 
 
 # Indexes
@@ -220,10 +221,10 @@ for char in str:
 
 
 # The Slice Operator
-print(str[3:5])
-h = str[:5] # элемент с индексом 5 не включается
+print(str[3:5])     # lo
+h = str[:5]         # элемент с индексом 5 не включается
 w = str[6:]
-print(h, w)
+print(h, w)         # Hello World!
 
 list_1 = ['Tatarnikov', 'Egor', 30, 'Korolev']
 print(list_1)
@@ -470,10 +471,15 @@ print("e =", e)  # [1, 2, [3, 4]] — полностью независимая 
 
 # Examples of working with list methods in Python
 
-# append(item) – adds a single item to the end of the list (modifies the list in place)
+# append(item) – добавляет один элемент в конец списка
 lst = [1, 2, 3]
 lst.append(4)
 print(lst)  # [1, 2, 3, 4]
+
+# extend(iterable) – добавляет все элементы из переданного итерируемого объекта в конец списка
+lst = [1, 2, 3]
+lst.extend([4, 5])
+print(lst)  # [1, 2, 3, 4, 5]
 
 # Using the concatenation operator "+" creates a new list (new object)
 lst = [1, 2, 3]
@@ -570,6 +576,11 @@ print(s.startswith("  He"))  # True
 # endswith(suffix[, start[, end]]) – проверяет, заканчивается ли строка на suffix
 print(s.endswith("!  "))  # True
 
+# find(sub[, start[, end]]) – возвращает индекс первого вхождения подстроки или -1, если не найдено
+print(s.find("World"))   # 9
+print(s.find("Hello"))   # 2
+print(s.find("Python"))  # -1
+
 # Срезы (slices)
 s = "Hello, Egor!"
 
@@ -652,8 +663,59 @@ print(new_text_2) # HELLO
 # Don’t Mutate A List That You Are Iterating Through
 colors = ["Red", "Purple", "Yellow"]
 
+"""
 for i in range(len(colors)):    # IndexError: list index out of range
 	if colors[i] == "Purple":
 	    del colors[i]
 	
 print(colors)
+"""
+
+"""
+Памятка. Это выглядит как многострочный комментарий,
+но на самом деле это строка, которая просто никуда не присвоена.
+Python её проигнорирует, если она не используется.
+Для настоящих комментариев, которые гарантированно игнорируются интерпретатором, нужно использовать #
+"""
+
+# set – неупорядоченная коллекция уникальных элементов
+
+# Создание множеств
+a = {1, 2, 3}
+b = set([3, 4, 5])
+empty = set()  # пустое множество, а не словарь
+
+# Добавление и удаление
+a.add(4)         # добавить элемент
+a.remove(2)      # удалить элемент (ошибка, если нет)
+a.discard(10)    # удалить без ошибки, если элемента нет
+a.clear()        # очистить множество
+a.update([5, 6]) # добавить несколько элементов
+
+# Операции с множествами
+a = {1, 2, 3}
+b = {3, 4, 5}
+
+a | b    # объединение: {1, 2, 3, 4, 5} # or a.union(b)
+a & b    # пересечение: {3}
+a - b    # разность: {1, 2}
+a ^ b    # симметрическая разность: {1, 2, 4, 5}
+
+# Проверки
+a = {1, 2}
+b = {1, 2, 3}
+print(a.issubset(b))   # True
+print(b.issuperset(a)) # True
+print(a.isdisjoint({3, 4}))  # True – нет общих элементов
+
+# Перебор множества
+for item in a:
+    print(item)
+
+# Преобразование
+lst = list(set([1, 2, 2, 3]))  # удаление дубликатов из списка
+
+# Пример использования
+words = ["apple", "banana", "apple", "cherry"]
+unique_words = set(words)
+print(len(unique_words))  # 3
